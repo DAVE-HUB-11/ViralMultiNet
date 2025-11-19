@@ -48,3 +48,28 @@ Access Notes
 
 ```bash
 pip install -r requirements.txt
+
+
+
+project/
+├── dataset_balanced_train.csv
+├── dataset_balanced_val.csv  
+├── dataset_balanced_test.csv
+├── anno_embs_train.npy      # Optional: annotation embeddings
+├── anno_embs_val.npy
+├── anno_embs_test.npy
+└── tokenizer_4mer/          # K-mer tokenizers
+    ├── tokenizer_5mer/
+    ├── tokenizer_6mer/
+    └── tokenizer_7mer/
+
+
+
+Train Teacher Model:
+python viralbert.py --stage teacher --multimodal
+
+Train Student Model with Knowledge Distillation:
+python viralbert.py --stage student --multimodal
+
+
+python viralbert.py --stage student --multimodal --enable_lora
